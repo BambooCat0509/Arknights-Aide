@@ -4,7 +4,7 @@ https://www.autohotkey.com/
 Don't forget to modify the parameters if you want to use.
 
 Operation list : 
-Press 1.5s to cancel the operation
+Press 1.5s to cancel the operating
 1. ctrl + alt + H	: Display the operation list 10 seconds
 2. ctrl + alt + R	: Reload program
 3. ctrl + alt + L	: Exit program
