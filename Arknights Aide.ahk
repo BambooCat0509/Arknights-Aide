@@ -1,5 +1,16 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 操作列表：										;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Operation list : Press 1.5s to cancel the operating						;;
+;; ctrl + alt + H : Display the operation list 10 seconds					;;
+;; ctrl + alt + R : Reload program											;;
+;; ctrl + alt + L : Exit program											;;
+;; ctrl + alt + M : Move the mouse to the specified position				;;
+;; ctrl + alt + C : Query the color code of the specified position			;;
+;; The following operations can only be performed on the simulator :		;;
+;; P : Pause the game when begin											;;
+;; H : Click the operator or props with current mouse position when pause	;;
+;; M : Deploy the operator or props with current mouse position when pause	;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 操作列表：(長按1.5秒可以取消操作)				;;
 ;; ctrl + alt + H : 呼叫操作列表顯示10秒			;;
 ;; ctrl + alt + R : 重啟程式						;;
 ;; ctrl + alt + L : 結束程式						;;
