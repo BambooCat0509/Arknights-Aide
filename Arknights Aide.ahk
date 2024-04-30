@@ -70,7 +70,7 @@ Global Flag := ""
 	SetTimer, Cancel, Off
 	if (!Canceled) {													;; 取消施放
 		Gosub, CanceledReset
-		MouseMove, 1625, 50, 0
+		MouseMove, %X%, %Y%, 0
 	}
 	return
 
