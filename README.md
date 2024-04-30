@@ -3,8 +3,7 @@ https://www.autohotkey.com/
 
 Don't forget to modify the parameters if you want to use.
 
-Operation list : 
-Press 1.5s to cancel the operating
+Operation list : (Press 1.5s to cancel the operating)
 1. ctrl + alt + H	: Display the operation list 10 seconds
 2. ctrl + alt + R	: Reload program
 3. ctrl + alt + L	: Exit program
@@ -20,8 +19,7 @@ https://www.autohotkey.com/
 
 如果想要自用，別忘了把參數修改成適合你電腦使用
 
-操作列表：
-長按1.5秒可以取消操作
+操作列表：(長按1.5秒可以取消操作)
 1. ctrl + alt + H	: 呼叫操作列表顯示10秒
 2. ctrl + alt + R	: 重啟程式
 3. ctrl + alt + L	: 結束程式
