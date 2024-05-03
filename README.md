@@ -14,6 +14,11 @@ The following operations can only be performed on the simulator :
 7. H				: Click the operator or props with current mouse position when pause
 8. M				: Deploy the operator or props with current mouse position when pause
 
+Issues that already know : 
+1. Sometimes can't type uppercase letter even not on simulator
+Solution : 
+1. Press esc once to fix it
+
 程式使用的語言是ahk v2.0，安裝請點擊以下連結：
 https://www.autohotkey.com/
 
@@ -29,3 +34,9 @@ https://www.autohotkey.com/
 6. P				: 開局暫停
 7. H				: 暫停點選當前鼠標位置的幹員或道具
 8. M				: 暫停部署當前鼠標位置的幹員或道具(划火柴)
+
+目前已知回報問題：
+1. 有時候使用英文大寫會打不出字
+解決方案：
+1. 按一下 Esc 後可以修正問題
+
