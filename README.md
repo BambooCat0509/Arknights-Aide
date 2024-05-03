@@ -1,4 +1,4 @@
-The program is writen with ahk v2.0. Click following url to download : 
+The program is writen with ahk v2.0. Click the following url to download : 
 https://www.autohotkey.com/
 
 Don't forget to modify the parameters if you want to use.
