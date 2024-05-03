@@ -40,3 +40,4 @@ https://www.autohotkey.com/
 解決方案：
 1. 按一下 Esc 後可以修正問題
 
+有任何問題歡迎回報
