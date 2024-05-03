@@ -1,4 +1,4 @@
-The program is writen with ahk v1.1. Click the following url to download : 
+The program is writen with ahk v1.1.37.01. Click the following url to download : 
 https://www.autohotkey.com/
 
 Don't forget to modify the parameters if you want to use.
@@ -19,7 +19,7 @@ Issues that already know :
 Solution : 
 1. Press esc once to fix it
 
-程式使用的語言是ahk v1.1，安裝請點擊以下連結：
+程式使用的語言是ahk v1.1.37.01，安裝請點擊以下連結：
 https://www.autohotkey.com/
 
 如果想要自用，別忘了把參數修改成適合你電腦使用
