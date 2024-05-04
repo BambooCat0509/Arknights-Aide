@@ -15,7 +15,7 @@ The following operations can only be performed in developer mode :
 6.  ctrl + alt + M	: Move the mouse to the specified position
 7.  ctrl + alt + C	: Query the color code of the specified position
 
-The following operations can only be performed on the simulator : 
+The following operations can only be performed on the simulator(Full Screen1920*1080) : 
 
 8.  R			: Return / Setting														
 9.  E			: Auto deploy / Exit Mission											
@@ -49,7 +49,7 @@ https://www.autohotkey.com/
 6.  ctrl + alt + M	: 鼠標移至指定座標
 7.  ctrl + alt + C	: 指定位置的色碼查詢
 
-以下操作僅能在模擬器視窗執行：
+以下操作僅能在模擬器視窗(全螢幕1920*1080)執行：
 
 8.  R			: 返回上頁 / 設定														
 9.  E			: 代理指揮 / 放棄行動											
