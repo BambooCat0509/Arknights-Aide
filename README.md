@@ -9,10 +9,14 @@ Operation list : (Space key is assumed to be pause in game on simulator)(Press 3
 3.  ctrl + alt + T	: Suspend / Restart all hotkeys except itself
 4.  ctrl + alt + R	: Reload program
 5.  ctrl + alt + L	: Exit program
-The following operations can only be performed in developer mode :
+
+The following operations can only be performed in developer mode : 
+
 6.  ctrl + alt + M	: Move the mouse to the specified position
 7.  ctrl + alt + C	: Query the color code of the specified position
+
 The following operations can only be performed on the simulator : 
+
 8.  R			: Return / Setting														
 9.  E			: Auto deploy / Exit Mission											
 10. S			: Mission start / Confirm												
@@ -39,10 +43,14 @@ https://www.autohotkey.com/
 3.  ctrl + alt + T	: 暫停 / 重啟自身外所有熱鍵
 4.  ctrl + alt + R	: 重啟程式
 5.  ctrl + alt + L	: 結束程式
+
 以下操作僅能在開發人員模式執行：
+
 6.  ctrl + alt + M	: 鼠標移至指定座標
 7.  ctrl + alt + C	: 指定位置的色碼查詢
+
 以下操作僅能在模擬器視窗執行：
+
 8.  R			: 返回上頁 / 設定														
 9.  E			: 代理指揮 / 放棄行動											
 10. S			: 開始行動 / 確認												
