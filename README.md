@@ -16,6 +16,7 @@ The following operations can only be performed on the simulator :
 
 Issues that already know : 
 1. Sometimes can't type uppercase letter even not on simulator
+
 Solution : 
 1. Press esc once to fix it
 
@@ -37,6 +38,7 @@ https://www.autohotkey.com/
 
 目前已知回報問題：
 1. 有時候使用英文大寫會打不出字
+
 解決方案：
 1. 按一下 Esc 後可以修正問題
 
