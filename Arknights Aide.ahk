@@ -9,7 +9,7 @@
 ;; The following operations can only be performed in developer mode : 						;;
 ;; ctrl + alt + M	: Move the mouse to the specified position								;;
 ;; ctrl + alt + C	: Query the color code of the specified position						;;
-;; The following operations can only be performed on the simulator : 						;;
+;; The following operations can only be performed on the simulator(Full Screen1920*1080) : 	;;
 ;; R				: Return / Setting														;;
 ;; E				: Auto deploy / Exit Mission											;;
 ;; S				: Mission start / Confirm												;;
@@ -32,7 +32,7 @@
 ;; 以下操作僅能在開發人員模式執行：								;;
 ;; ctrl + alt + M	: 鼠標移至指定座標							;;
 ;; ctrl + alt + C	: 指定位置的色碼查詢						;;
-;; 以下操作僅能在模擬器視窗執行：								;;
+;; 以下操作僅能在模擬器視窗執行(全螢幕1920*1080)：				;;
 ;; R				: 返回上頁 / 設定							;;
 ;; E				: 代理指揮 / 放棄行動						;;
 ;; S				: 開始行動 / 確認							;;
@@ -72,7 +72,7 @@ $^!H::																					;; ctrl+alt+H 顯示操作列表10秒
 	KeyWait, H, %CancelTime%
 	SetTimer, Cancel, delete
 	if (!Canceled) {																	;; 正常施放
-		ToolTip, 1.   ctrl + alt + H`t: Display the operation list 10 seconds`n2.   ctrl + alt + D`t: Turn developer mode on / off`n3.   ctrl + alt + T`t: Suspend / Restart all hotkeys except itself`n4.   ctrl + alt + R`t: Reload program`n5.   ctrl + alt + L`t: Exit program`nThe following operations can only be performed in developer mode : `n6.   ctrl + alt + M`t: Move the mouse to the specified position`n7.   ctrl + alt + C`t: Query the color code of the specified position`nThe following operations can only be performed on the simulator : `n8.   R`t`t`t: Return / Setting`n9.   E`t`t`t: Auto deploy / Exit Mission`n10. S`t`t`t: Mission start / Confirm`n11. Space`t`t: Pause / Resume game`n12. A`t`t`t: Speed changing`n13. F`t`t`t: Turn skill on / off`n14. D`t`t`t: Retreat operators / props`n15. P`t`t`t: Pause the game when begin`n16. H`t`t`t: Click the operator or props with current mouse position when pause`n17. M`t`t`t: Deploy the operator or props with current mouse position when pause`n18. alt + shift + S`t: Start / Stop cleaning up the action points with specified level(AFK)
+		ToolTip, 1.   ctrl + alt + H`t: Display the operation list 10 seconds`n2.   ctrl + alt + D`t: Turn developer mode on / off`n3.   ctrl + alt + T`t: Suspend / Restart all hotkeys except itself`n4.   ctrl + alt + R`t: Reload program`n5.   ctrl + alt + L`t: Exit program`nThe following operations can only be performed in developer mode : `n6.   ctrl + alt + M`t: Move the mouse to the specified position`n7.   ctrl + alt + C`t: Query the color code of the specified position`nThe following operations can only be performed on the simulator(Full Screen1920*1080) : `n8.   R`t`t`t: Return / Setting`n9.   E`t`t`t: Auto deploy / Exit Mission`n10. S`t`t`t: Mission start / Confirm`n11. Space`t`t: Pause / Resume game`n12. A`t`t`t: Speed changing`n13. F`t`t`t: Turn skill on / off`n14. D`t`t`t: Retreat operators / props`n15. P`t`t`t: Pause the game when begin`n16. H`t`t`t: Click the operator or props with current mouse position when pause`n17. M`t`t`t: Deploy the operator or props with current mouse position when pause`n18. alt + shift + S`t: Start / Stop cleaning up the action points with specified level(AFK)
 		SetTimer, ToolTipReset, 10000
 	}
 	Gosub, CanceledReset
