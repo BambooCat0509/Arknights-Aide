@@ -39,10 +39,10 @@ https://www.autohotkey.com/
 3.  ctrl + alt + T	: 暫停 / 重啟自身外所有熱鍵
 4.  ctrl + alt + R	: 重啟程式
 5.  ctrl + alt + L	: 結束程式
-The following operations can only be performed in developer mode : 
+以下操作僅能在開發人員模式執行：
 6.  ctrl + alt + M	: 鼠標移至指定座標
 7.  ctrl + alt + C	: 指定位置的色碼查詢
-The following operations can only be performed on the simulator : 
+以下操作僅能在模擬器視窗執行：
 8.  R			: 返回上頁 / 設定														
 9.  E			: 代理指揮 / 放棄行動											
 10. S			: 開始行動 / 確認												
