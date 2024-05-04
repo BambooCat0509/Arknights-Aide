@@ -14,10 +14,10 @@ The following operations can only be performed on the simulator :
 7. H				: Click the operator or props with current mouse position when pause
 8. M				: Deploy the operator or props with current mouse position when pause
 
-V0.1Issues that already know : 
+v0.1Issues that already know : 
 1. Sometimes can't type uppercase letter even not on simulator
 
-V0.1solution : 
+v0.1solution : 
 1. Press esc once to fix it
 
 程式使用的語言是ahk v1.1.37.01，安裝請點擊以下連結：
