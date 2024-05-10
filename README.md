@@ -13,24 +13,26 @@ Operation list : (Space key is assumed to be pause in game on simulator)(Press 3
 The following operations can only be performed in developer mode : 
 
 6.  ctrl + alt + M	: Move the mouse to the specified position
-7.  ctrl + alt + C	: Query the color code of the specified position
+7.  ctrl + alt + G	: Get the current values of each variable
+8.  ctrl + alt + C	: Query the color code of the specified position
 
 The following operations can only be performed on the simulator(Full Screen1920*1080) : 
 
-8.  R			: Return / Setting														
-9.  E			: Auto deploy / Exit Mission											
-10. S			: Mission start / Confirm												
-11. Space		: Pause / Resume game													
-12. A			: Speed changing														
-13. F			: Turn skill on / off													
-14. D			: Retreat operators / props												
-15. P			: Pause the game when begin												
-16. H			: Click the operator or props with current mouse position when pause	
-17. M			: Deploy the operator or props with current mouse position when pause
-18. alt + shift + S	: Start / Stop cleaning up the action points with specified level(AFK)
+9.  R			: Return / Setting														
+10. E			: Auto deploy / Exit Mission											
+11. S			: Mission start / Confirm												
+12. Space		: Pause / Resume game													
+13. A			: Speed changing														
+14. F			: Turn skill on / off													
+15. D			: Retreat operators / props												
+16. P			: Pause the game when begin												
+17. H			: Click the operator or props with current mouse position when pause	
+18. M			: Deploy the operator or props with current mouse position when pause
+19. alt + shift + S	: Start / Stop cleaning up the action points with specified level(AFK)
 
-v1.0 Fixed the following problems : 
-1. Sometimes can't press uppercase letters
+v1.2 Update content : 
+1. Added new hotkey "ctrl+alt+G"
+2. Optimized part of the code
 
 程式使用的語言是ahk v1.1.37.01，安裝請點擊以下連結：
 https://www.autohotkey.com/
@@ -47,23 +49,25 @@ https://www.autohotkey.com/
 以下操作僅能在開發人員模式執行：
 
 6.  ctrl + alt + M	: 鼠標移至指定座標
-7.  ctrl + alt + C	: 指定位置的色碼查詢
+7.  ctrl + alt + G	: 取得當前各變數值
+8.  ctrl + alt + C	: 指定位置的色碼查詢
 
 以下操作僅能在模擬器視窗執行(全螢幕1920*1080)：
 
-8.  R			: 返回上頁 / 設定														
-9.  E			: 代理指揮 / 放棄行動											
-10. S			: 開始行動 / 確認												
-11. Space		: 暫停 / 繼續遊戲													
-12. A			: 倍速調整														
-13. F			: 開啟 / 關閉技能													
-14. D			: 撤退幹員 / 道具												
-15. P			: 開局暫停												
-16. H			: 暫停點選當前鼠標位置的幹員或道具
-17. M			: 暫停部署當前鼠標位置的幹員或道具(划火柴)
-18. alt + shift + S	: 開始 / 結束掛機清體力
+9.  R			: 返回上頁 / 設定														
+10. E			: 代理指揮 / 放棄行動											
+11. S			: 開始行動 / 確認												
+12. Space		: 暫停 / 繼續遊戲													
+13. A			: 倍速調整														
+14. F			: 開啟 / 關閉技能													
+15. D			: 撤退幹員 / 道具												
+16. P			: 開局暫停												
+17. H			: 暫停點選當前鼠標位置的幹員或道具
+18. M			: 暫停部署當前鼠標位置的幹員或道具(划火柴)
+19. alt + shift + S	: 開始 / 結束掛機清體力
 
-v1.0 修復以下問題：
-1. 有時候使用英文大寫會打不出字
+v1.2 更新內容：
+1. 新增熱鍵"ctrl+alt+G"
+2. 優化部分代碼
 
 有任何問題歡迎回報
