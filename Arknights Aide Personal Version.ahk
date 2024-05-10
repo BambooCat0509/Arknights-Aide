@@ -16,7 +16,7 @@ $^!H::																							;; ctrl+alt+H 顯示操作列表10秒
 	KeyWait, %Key%, %CancelTime%
 	SetTimer, Cancel, delete
 	if (!Canceled) {																			;; 正常施放
-		ToolTip, 1.   ctrl + alt + H`t: Display the operation list 10 seconds`n2.   ctrl + alt + D`t: Turn developer mode on / off`n3.   ctrl + alt + T`t: Suspend / Restart all hotkeys except itself`n4.   ctrl + alt + R`t: Reload program`n5.   ctrl + alt + L`t: Exit program`nThe following operations can only be performed in developer mode : `n6.   ctrl + alt + M`t: Move the mouse to the specified position`n7.   ctrl + alt + C`t: Query the color code of the specified position`nThe following operations can only be performed on the simulator : `n8.   P`t`t`t: Pause the game when begin`n9.   H`t`t`t: Click the operator or props with current mouse position when pause`n10. M`t`t`t: Deploy the operator or props with current mouse position when pause
+		ToolTip, 1.   ctrl + alt + H`t: Display the operation list 10 seconds`n2.   ctrl + alt + D`t: Turn developer mode on / off`n3.   ctrl + alt + T`t: Suspend / Restart all hotkeys except itself`n4.   ctrl + alt + R`t: Reload program`n5.   ctrl + alt + L`t: Exit program`nThe following operations can only be performed in developer mode : `n6.   ctrl + alt + M`t: Move the mouse to the specified position`n7.   ctrl + alt + G`t: Get the current values of each variable`n8.   ctrl + alt + C`t: Query the color code of the specified position`nThe following operations can only be performed on the simulator : `n9.   P`t`t`t: Pause the game when begin`n10. H`t`t`t: Click the operator or props with current mouse position when pause`n11. M`t`t`t: Deploy the operator or props with current mouse position when pause
 		SetTimer, ToolTipReset, 10000
 	}
 	return
