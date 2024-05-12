@@ -4,8 +4,8 @@ https://www.autohotkey.com/
 Configuration file and executable file must be placed in the same path!
 Don't forget to modify the parameters in "Arknights Aide.config" as you want.
 
-v2.0 Update content : 
-1. Added configuration file
+v2.0.1 Update content : 
+1. Fixed the problem of hotkey "Space"
 2. Optimized some part of the code
 
 Welcome to report if there are any bugs.
@@ -46,8 +46,8 @@ https://www.autohotkey.com/
 設定檔和執行檔應置於相同路徑！
 如果想要自用，別忘了適當修改"Arknights Aide.config"中的參數
 
-v2.0 更新內容：
-1. 新增設定檔
+v2.0.1 更新內容：
+1. 修正熱鍵"Space"的錯誤
 2. 優化部分代碼
 
 如果有任何漏洞歡迎回報

@@ -3,7 +3,7 @@
 SetBatchLines -1
 Global WinTitle := "BlueStacks"																	;; 模擬器視窗名稱
 Global Width := 1920, Height := 1080															;; 模擬器尺寸，單位:pixel
-Global CancelTime := 3000																		;; 熱鍵取消施放時長，單位：ms
+Global CancelTime := 1500																		;; 熱鍵取消施放時長，單位：ms
 Global FrameTime := 39.998																		;; 遊戲內一幀的時長，單位：ms
 Global X := 1200, Y := 800																		;; 指定位置，單位:pixel
 Global KeycaH := true																			;; 熱鍵 ^!H 是否啟用
@@ -277,7 +277,7 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		SetMouseDelay, 10
 		return
 	$Space::																					;; Space 暫停 / 繼續遊戲
-		if (!KeySpcae)
+		if (!KeySpace)
 			return
 		Key := "Space"
 		targetX := SpaceX, targetY := SpaceY
