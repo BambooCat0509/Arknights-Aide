@@ -1,28 +1,29 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (Space key is assumed to be pause in game on simulator)(Press 3s to cancel the move)		;;
-;; Operation list : 																		;;
-;; ctrl + alt + H	: Display the operation list 10 seconds									;;
-;; ctrl + alt + D	: Turn developer mode on / off											;;
-;; ctrl + alt + T	: Suspend / Restart all hotkeys except itself							;;
-;; ctrl + alt + R	: Reload program														;;
-;; ctrl + alt + L	: Exit program															;;
-;; The following operations can only be performed in developer mode : 						;;
-;; ctrl + alt + M	: Move the mouse to the specified position								;;
-;; ctrl + alt + G	: Get the current values of each variable								;;
-;; ctrl + alt + C	: Query the color code of the specified position						;;
-;; The following operations can only be performed on the simulator(Full Screen1920*1080) : 	;;
-;; R				: Return / Setting														;;
-;; E				: Auto deploy / Exit Mission											;;
-;; S				: Mission start / Confirm												;;
-;; Space			: Pause / Resume game													;;
-;; A				: Speed changing														;;
-;; F				: Turn skill on / off													;;
-;; D				: Retreat operators / props												;;
-;; P				: Pause the game when begin												;;
-;; H				: Click the operator or props with current mouse position when pause	;;
-;; M				: Deploy the operator or props with current mouse position when pause	;;
-;; alt + shift + S	: Start / Stop cleaning up the action points with specified level(AFK)	;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (Space key is assumed to be pause in game on simulator)(Press 3s to cancel the move)			;;
+;; Operation list : 																			;;
+;; ctrl + alt + H	: Display the operation list 10 seconds										;;
+;; ctrl + alt + D	: Turn developer mode on / off												;;
+;; ctrl + alt + T	: Suspend / Restart all hotkeys except itself								;;
+;; ctrl + alt + R	: Reload program															;;
+;; ctrl + alt + L	: Exit program																;;
+;; The following operations can only be performed in developer mode : 							;;
+;; ctrl + alt + M	: Move the mouse to the specified position									;;
+;; ctrl + alt + G	: Get the current values of each variable									;;
+;; ctrl + alt + C	: Query the color code of the specified position							;;
+;; The following operations can only be performed on the simulator(Full Screen1920*1080) : 		;;
+;; R				: Return / Setting															;;
+;; E				: Auto deploy / Exit Mission												;;
+;; S				: Mission start / Confirm													;;
+;; Space			: Pause / Resume game														;;
+;; A				: Speed changing															;;
+;; F				: Turn skill on / off														;;
+;; D				: Retreat operators / props													;;
+;; P				: Pause the game when begin													;;
+;; K				: Pause the game after it goes about 1 frame								;;
+;; H				: Click the operator or props by current mouse position while game paused	;;
+;; M				: Deploy the operator or props by current mouse position while game paused	;;
+;; alt + shift + S	: Start / Stop cleaning up the action points with specified level(AFK)		;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; (預設空白鍵為模擬器自帶的遊戲暫停鈕)(長按3秒可以取消操作)	;;
 ;; 操作列表：													;;
 ;; ctrl + alt + H	: 呼叫操作列表顯示10秒						;;
@@ -43,15 +44,20 @@
 ;; F				: 開啟 / 關閉技能							;;
 ;; D				: 撤退幹員 / 道具							;;
 ;; P				: 開局暫停									;;
+;; K				: 遊戲行進約1幀後暫停						;;
 ;; H				: 暫停點選當前鼠標位置的幹員或道具			;;
 ;; M				: 暫停部署當前鼠標位置的幹員或道具(划火柴)	;;
 ;; alt + shift + S	: 開始 / 結束掛機清體力						;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+#SingleInstance Force
 #Persistent
+#NoEnv
+SetBatchLines -1
 Global WinTitle := "BlueStacks"																	;; 模擬器視窗名稱
 Global Width := 1920, Height := 1080															;; 模擬器尺寸，單位:pixel
 Global CancelTime := 3000																		;; 熱鍵取消施放時長，單位：ms
+Global Zero := 0																				;; 常數0
 Global X := 1200, Y := 800																		;; 指定位置，單位:pixel
 Global RX := 90, RY := 80																		;; 熱鍵 R 的座標，單位:pixel
 Global SX := 1727, SY := 983																	;; 熱鍵 S 的座標，單位:pixel
@@ -75,7 +81,7 @@ $^!H::																							;; ctrl+alt+H 顯示操作列表10秒
 	KeyWait, %Key%, %CancelTime%
 	SetTimer, Cancel, delete
 	if (!Canceled) {																			;; 正常施放
-		ToolTip, 1.   ctrl + alt + H`t: Display the operation list 10 seconds`n2.   ctrl + alt + D`t: Turn developer mode on / off`n3.   ctrl + alt + T`t: Suspend / Restart all hotkeys except itself`n4.   ctrl + alt + R`t: Reload program`n5.   ctrl + alt + L`t: Exit program`nThe following operations can only be performed in developer mode : `n6.   ctrl + alt + M`t: Move the mouse to the specified position`n7.   ctrl + alt + G`t: Get the current values of each variable`n8.   ctrl + alt + C`t: Query the color code of the specified position`nThe following operations can only be performed on the simulator(Full Screen1920*1080) : `n9.   R`t`t`t: Return / Setting`n10. E`t`t`t: Auto deploy / Exit Mission`n11. S`t`t`t: Mission start / Confirm`n12. Space`t`t: Pause / Resume game`n13. A`t`t`t: Speed changing`n14. F`t`t`t: Turn skill on / off`n15. D`t`t`t: Retreat operators / props`n16. P`t`t`t: Pause the game when begin`n17. H`t`t`t: Click the operator or props with current mouse position when pause`n18. M`t`t`t: Deploy the operator or props with current mouse position when pause`n19. alt + shift + S`t: Start / Stop cleaning up the action points with specified level(AFK)
+		ToolTip, 1.   ctrl + alt + H`t: Display the operation list 10 seconds`n2.   ctrl + alt + D`t: Turn developer mode on / off`n3.   ctrl + alt + T`t: Suspend / Restart all hotkeys except itself`n4.   ctrl + alt + R`t: Reload program`n5.   ctrl + alt + L`t: Exit program`nThe following operations can only be performed in developer mode : `n6.   ctrl + alt + M`t: Move the mouse to the specified position`n7.   ctrl + alt + G`t: Get the current values of each variable`n8.   ctrl + alt + C`t: Query the color code of the specified position`nThe following operations can only be performed on the simulator(Full Screen1920*1080) : `n9.   R`t`t`t: Return / Setting`n10. E`t`t`t: Auto deploy / Exit Mission`n11. S`t`t`t: Mission start / Confirm`n12. Space`t`t: Pause / Resume game`n13. A`t`t`t: Speed changing`n14. F`t`t`t: Turn skill on / off`n15. D`t`t`t: Retreat operators / props`n16. P`t`t`t: Pause the game at beginning`n17. K`t`t`t: Pause the game after it goes about 1 frame`n18. H`t`t`t: Click the operator or props by current mouse position while game paused`n19. M`t`t`t: Deploy the operator or props by current mouse position while game paused`n20. alt + shift + S`t: Start / Stop cleaning up the action points with specified level(AFK)
 		SetTimer, ToolTipReset, 10000
 	}
 	return
@@ -175,12 +181,14 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		SetTimer, Cancel, delete
 		if (!Canceled) {																		;; 正常施放
 			Color1 := "0xFFFFFF", Color2 := "0xF5F5F5"												;; 指定檢查顏色
-			PixelGetColor, ColorP1, 1780, 65														;; 暫停 左上
-			PixelGetColor, ColorP2, 1810, 65														;; 暫停 右上
-			if ((ColorP1 = Color1 || ColorP1 = Color2) && ColorP2 != Color1 && ColorP2 != Color2)
-				Flag := "Pause"
-			if ((ColorP1 = Color1 || ColorP1 = Color2) && (ColorP2 = Color1 || ColorP2 = Color2))
-				Flag := "Resume"
+			PixelGetColor, ColorP1, 1645, 80, %WinID%												;; 倍速 數字
+			PixelGetColor, ColorP2, 1645, 110, %WinID%												;; 倍速 三角
+			PixelGetColor, ColorP3, 1780, 65														;; 暫停 左上
+			PixelGetColor, ColorP4, 1810, 65														;; 暫停 右上
+			if ((ColorP1 != Color1 && ColorP2 != Color1) || (ColorP1 != Color2 && ColorP2 != Color2))
+				Flag := "2X"
+			if ((ColorP1 = Color1 && ColorP2 = Color1) || (ColorP1 = Color2 && ColorP2 = Color2))
+				Flag := "1X"
 			MouseGetPos, currentX, currentY
 			PixelGetColor, ColorCurrent, %currentX%, %currentY%
 			PixelGetColor, ColorSpecified, %X%, %Y%
@@ -368,6 +376,47 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		SetKeyDelay, 10
 		SetMouseDelay, 10
 		return
+	$K::																						;; K 遊戲行進約1幀後暫停
+		Gosub, isInBattle
+		if (Flag = "Resume") {																	;; 暫停遊戲
+			SendEvent, {Esc}
+			Sleep, 300
+		}
+		Key := "K"
+		targetX := AX, targetY := AY
+		ExitLoop := false
+		Gosub, CanceledReset
+		SetTimer, Cancel, %CancelTime%
+		SetKeyDelay, 0
+		SetMouseDelay, 0
+		KeyWait, %Key%, %CancelTime%
+		SetTimer, Cancel, delete
+		if (!Canceled) {																		;; 正常施放
+			Gosub, Times
+			if (Flag = "2X") {
+				MouseGetPos, currentX, currentY
+				mouseMove, %Width%, %Zero%, 0
+				SendEvent, {Click %Width% %Zero%}
+				mouseMove, %targetX%, %targetY%, 0
+				SendEvent, {Click %targetX% %targetY%}
+				mouseMove, %currentX%, %currentY%, 0
+			}
+			freq := 0, start := 0, end := 0
+			DllCall("QueryPerformanceFrequency", "Int64 *", freq)
+			SendEvent, {Space Down}
+			DllCall("QueryPerformanceCounter", "Int64 *", start)
+			SendEvent, {Space Up}
+			Loop {
+				DllCall("QueryPerformanceCounter", "Int64 *", end)
+				if ((end - start) / freq * 1000 > 39.998)
+					break
+			}
+			SendEvent, {Esc}
+			Sleep, 300
+		}
+		SetKeyDelay, 10
+		SetMouseDelay, 10
+		return
 	$P::																						;; P 開局暫停
 		Key := "P"
 		ExitLoop := false
@@ -421,6 +470,7 @@ $^!L::																							;; ctrl+alt+L 結束程式
 			SendEvent, {Esc Down}
 			Sleep, 1
 			SendEvent, {Esc Up}
+			Sleep, 300
 		}
 		SetKeyDelay, 10
 		SetMouseDelay, 10
@@ -453,6 +503,7 @@ $^!L::																							;; ctrl+alt+L 結束程式
 			SendEvent, {Esc Up}
 			Sleep, 1
 			mouseMove, 1200, 800, 0
+			Sleep, 300
 		}
 		SetKeyDelay, 10
 		SetMouseDelay, 10
@@ -484,6 +535,16 @@ $^!L::																							;; ctrl+alt+L 結束程式
 			Flag := "Pause"
 		if ((ColorP1 = Color1 || ColorP1 = Color2) && (ColorP2 = Color1 || ColorP2 = Color2))
 			Flag := "Resume"
+		return
+	Times:
+		Gosub, FlagReset
+		Color1 := "0xFFFFFF", Color2 := "0xF5F5F5"												;; 指定檢查顏色
+		PixelGetColor, ColorP1, 1645, 80, %WinID%												;; 倍速 數字
+		PixelGetColor, ColorP2, 1645, 110, %WinID%												;; 倍速 三角
+		if ((ColorP1 != Color1 && ColorP2 != Color1) || (ColorP1 != Color2 && ColorP2 != Color2))
+			Flag := "2X"
+		if ((ColorP1 = Color1 && ColorP2 = Color1) || (ColorP1 = Color2 && ColorP2 = Color2))
+			Flag := "1X"
 		return
 	ScriptAFK:																					;; 每隔5秒按5次S鍵
 		if (!Toggle && ScriptAFK && WinActive(WinTitle)) {
