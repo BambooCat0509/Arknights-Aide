@@ -1,5 +1,4 @@
 #SingleInstance Force
-#Persistent
 #NoEnv
 SetBatchLines -1
 Global WinTitle := "BlueStacks"																	;; 模擬器視窗名稱
@@ -292,12 +291,6 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		ExitLoop := true
 		return
 #If
-Cancel:
-	Canceled := true
-	SetTimer, Cancel, delete
-	ToolTip, Canceled!
-	SetTimer, ToolTipReset, 1000
-	return
 CanceledReset:
 	Canceled := false
 	return
@@ -305,5 +298,12 @@ FlagReset:
 	Flag := ""
 	return
 ToolTipReset:
+	SetTimer, ToolTipReset, delete
 	ToolTip
+	return
+Cancel:
+	Canceled := true
+	SetTimer, Cancel, delete
+	ToolTip, Canceled!
+	SetTimer, ToolTipReset, 1000
 	return
