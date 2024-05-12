@@ -1,64 +1,31 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (Space key is assumed to be pause in game on simulator)(Press 3s to cancel the move)			;;
-;; Operation list : 																			;;
-;; ctrl + alt + H	: Display the operation list 10 seconds										;;
-;; ctrl + alt + D	: Turn developer mode on / off												;;
-;; ctrl + alt + T	: Suspend / Restart all hotkeys except itself								;;
-;; ctrl + alt + R	: Reload program															;;
-;; ctrl + alt + L	: Exit program																;;
-;; The following operations can only be performed in developer mode : 							;;
-;; ctrl + alt + M	: Move the mouse to the specified position									;;
-;; ctrl + alt + G	: Get the current values of each variable									;;
-;; ctrl + alt + C	: Query the color code of the specified position							;;
-;; The following operations can only be performed on the simulator(Full Screen1920*1080) : 		;;
-;; R				: Return / Setting															;;
-;; E				: Auto deploy / Exit Mission												;;
-;; S				: Mission start / Confirm													;;
-;; Space			: Pause / Resume game														;;
-;; A				: Speed changing															;;
-;; F				: Turn skill on / off														;;
-;; D				: Retreat operators / props													;;
-;; P				: Pause the game when begin													;;
-;; K				: Pause the game after it goes about 1 frame								;;
-;; H				: Click the operator or props by current mouse position while game paused	;;
-;; M				: Deploy the operator or props by current mouse position while game paused	;;
-;; alt + shift + S	: Start / Stop cleaning up the action points with specified level(AFK)		;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (預設空白鍵為模擬器自帶的遊戲暫停鈕)(長按3秒可以取消操作)	;;
-;; 操作列表：													;;
-;; ctrl + alt + H	: 呼叫操作列表顯示10秒						;;
-;; ctrl + alt + D	: 開啟 / 關閉開發人員模式					;;
-;; ctrl + alt + T	: 暫停 / 重啟自身外所有熱鍵					;;
-;; ctrl + alt + R	: 重啟程式									;;
-;; ctrl + alt + L	: 結束程式									;;
-;; 以下操作僅能在開發人員模式執行：								;;
-;; ctrl + alt + M	: 鼠標移至指定座標							;;
-;; ctrl + alt + G	: 取得當前各變數值							;;
-;; ctrl + alt + C	: 指定位置的色碼查詢						;;
-;; 以下操作僅能在模擬器視窗執行(全螢幕1920*1080)：				;;
-;; R				: 返回上頁 / 設定							;;
-;; E				: 代理指揮 / 放棄行動						;;
-;; S				: 開始行動 / 確認							;;
-;; Space			: 暫停 / 繼續遊戲							;;
-;; A				: 倍速調整									;;
-;; F				: 開啟 / 關閉技能							;;
-;; D				: 撤退幹員 / 道具							;;
-;; P				: 開局暫停									;;
-;; K				: 遊戲行進約1幀後暫停						;;
-;; H				: 暫停點選當前鼠標位置的幹員或道具			;;
-;; M				: 暫停部署當前鼠標位置的幹員或道具(划火柴)	;;
-;; alt + shift + S	: 開始 / 結束掛機清體力						;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 #SingleInstance Force
-#Persistent
 #NoEnv
 SetBatchLines -1
 Global WinTitle := "BlueStacks"																	;; 模擬器視窗名稱
 Global Width := 1920, Height := 1080															;; 模擬器尺寸，單位:pixel
 Global CancelTime := 3000																		;; 熱鍵取消施放時長，單位：ms
-Global Zero := 0																				;; 常數0
+Global FrameTime := 39.998																		;; 遊戲內一幀的時長，單位：ms
 Global X := 1200, Y := 800																		;; 指定位置，單位:pixel
+Global KeycaH := true																			;; 熱鍵 ^!H 是否啟用
+Global KeycaD := true																			;; 熱鍵 ^!D 是否啟用
+Global KeycaR := true																			;; 熱鍵 ^!R 是否啟用
+Global KeycaL := true																			;; 熱鍵 ^!L 是否啟用
+Global KeycaM := false																			;; 熱鍵 ^!M 是否啟用
+Global KeycaG := false																			;; 熱鍵 ^!G 是否啟用
+Global KeycaC := false																			;; 熱鍵 ^!C 是否啟用
+Global KeyR := true																				;; 熱鍵 R 是否啟用
+Global KeyS := true																				;; 熱鍵 S 是否啟用
+Global KeyE := true																				;; 熱鍵 E 是否啟用
+Global KeySpace := true																			;; 熱鍵 Space 是否啟用
+Global KeyA := true																				;; 熱鍵 A 是否啟用
+Global KeyF := true																				;; 熱鍵 F 是否啟用
+Global KeyD := true																				;; 熱鍵 D 是否啟用
+Global KeyP := true																				;; 熱鍵 P 是否啟用
+Global KeyK := true																				;; 熱鍵 K 是否啟用
+Global KeyH := true																				;; 熱鍵 H 是否啟用
+Global KeyM := true																				;; 熱鍵 M 是否啟用
+Global KeyasS := true																			;; 熱鍵 !+S 是否啟用
+Global Zero := 0																				;; 常數0
 Global RX := 90, RY := 80																		;; 熱鍵 R 的座標，單位:pixel
 Global SX := 1727, SY := 983																	;; 熱鍵 S 的座標，單位:pixel
 Global EX := 1600, EY := 900																	;; 熱鍵 E 的座標，單位:pixel
@@ -73,8 +40,11 @@ Global ScriptAFK := false																		;; 是否啟用 ScriptAFK
 Global Toggle := false																			;; 是否暫停所有熱鍵
 Global ExitLoop := false																		;; 是否退出迴圈
 Global Flag := ""																				;; 當前狀態 Flag
+Configration()																					;; 讀取 config 檔案
 
 $^!H::																							;; ctrl+alt+H 顯示操作列表10秒
+	if (!KeycaH)
+		return
 	Key := "H"
 	Gosub, CanceledReset
 	SetTimer, Cancel, %CancelTime%
@@ -86,6 +56,8 @@ $^!H::																							;; ctrl+alt+H 顯示操作列表10秒
 	}
 	return
 $^!D::																							;; ctrl+alt+D 開發人員模式
+	if (!KeycaD)
+		return
 	Key := "D"
 	Gosub, CanceledReset
 	SetTimer, Cancel, %CancelTime%
@@ -110,21 +82,35 @@ $^!T::																							;; ctrl+alt+P 暫停 / 重啟熱鍵
 		Toggle := !Toggle
 		if (Toggle) {																			;; 暫停除自身外的所有 Hotkey
 			ToolTip, Hotkey suspend!
-			Hotkey, ^!H, off
-			Hotkey, ^!D, off
-			Hotkey, ^!R, off
-			Hotkey, ^!L, off
+			KeycaH := false
+			KeycaD := false
+			KeycaR := false
+			KeycaL := false
+			KeycaM := false
+			KeycaG := false
+			KeycaC := false
+			KeyR := false
+			KeyS := false
+			KeyE := false
+			KeySpace := false
+			KeyA := false
+			KeyF := false
+			KeyD := false
+			KeyP := false
+			KeyK := false
+			KeyH := false
+			KeyM := false
+			KeyasS := false
 		} else {																				;; 恢復所有 Hotkey
 			ToolTip, Hotkey enable!
-			Hotkey, ^!H, on
-			Hotkey, ^!D, on
-			Hotkey, ^!R, on
-			Hotkey, ^!L, on
+			Configration()
 		}
 		SetTimer, ToolTipReset, 2000
 	}
 	return
 $^!R::																							;; ctrl+alt+R 重啟程式
+	if (!KeycaR)
+		return
 	Key := "R"
 	Gosub, CanceledReset
 	SetTimer, Cancel, %CancelTime%
@@ -138,6 +124,8 @@ $^!R::																							;; ctrl+alt+R 重啟程式
 	}
 	return
 $^!L::																							;; ctrl+alt+L 結束程式
+	if (!KeycaL)
+		return
 	Key := "L"
 	Gosub, CanceledReset
 	SetTimer, Cancel, %CancelTime%
@@ -153,6 +141,8 @@ $^!L::																							;; ctrl+alt+L 結束程式
 
 #If (!Toggle && Developer)
 	$^!M::																						;; ctrl+alt+M 鼠標移至指定座標
+		if (!KeycaM)
+			return
 		Key := "M"
 		targetX := X, targetY := Y
 		Gosub, CanceledReset
@@ -163,17 +153,21 @@ $^!L::																							;; ctrl+alt+L 結束程式
 			MouseMove, %targetX%, %targetY%, 0
 		return
 	$^!G::																						;; ctrl+alt+G 取得當前各變數值
+		if (!KeycaG)
+			return
 		Key := "G"
 		Gosub, CanceledReset
 		SetTimer, Cancel, %CancelTime%
 		KeyWait, %Key%, %CancelTime%
 		SetTimer, Cancel, delete
 		if (!Canceled) {																		;; 正常施放
-			ToolTip, Toggle : "%Toggle%"`nDeveloper : "%Developer%"`nCanceled : "%Canceled%"`nExitLoop : "%ExitLoop%"`nScriptAFK : "%ScriptAFK%"`nFlag : "%Flag%"
+			ToolTip, True : 1`, False : 0`nToggle : "%Toggle%"`nDeveloper : "%Developer%"`nCanceled : "%Canceled%"`nExitLoop : "%ExitLoop%"`nScriptAFK : "%ScriptAFK%"`nFlag : "%Flag%"`nKeycaH : "%KeycaH%"`nKeycaD : "%KeycaD%"`nKeycaR : "%KeycaR%"`nKeycaL : "%KeycaL%"`nKeycaM : "%KeycaM%"`nKeycaG : "%KeycaG%"`nKeycaC : "%KeycaC%"`nKeyR : "%KeyR%"`nKeyS : "%KeyS%"`nKeyE : "%KeyE%"`nKeySpace : "%KeySpace%"`nKeyA : "%KeyA%"`nKeyF : "%KeyF%"`nKeyD : "%KeyD%"`nKeyP : "%KeyP%"`nKeyK : "%KeyK%"`nKeyH : "%KeyH%"`nKeyM : "%KeyM%"`nKeyasS : "%KeyasS%"
 			SetTimer, ToolTipReset, 5000
 		}
 		return
 	$^!C::																						;; ctrl+alt+C 指定位置的色碼查詢
+		if (!KeycaC)
+			return
 		Key := "C"
 		Gosub, CanceledReset
 		SetTimer, Cancel, %CancelTime%
@@ -202,6 +196,8 @@ $^!L::																							;; ctrl+alt+L 結束程式
 	SetTimer, ScriptAFK, 0
 	Key := "", targetX := X, targetY := Y
 	$R::																						;; R 返回上頁 / 設定
+		if (!KeyR)
+			return
 		Key := "R"
 		targetX := RX, targetY := RY
 		Gosub, CanceledReset
@@ -227,6 +223,8 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		SetMouseDelay, 10
 		return
 	$S::																						;; S 開始行動 / 確認
+		if (!KeyS)
+			return
 		Key := "S"
 		targetX := SX, targetY := SY
 		Gosub, CanceledReset
@@ -252,6 +250,8 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		SetMouseDelay, 10
 		return
 	$E::																						;; E 代理指揮 / 放棄行動
+		if (!KeyE)
+			return
 		Key := "E"
 		targetX := EX, targetY := EY
 		Gosub, CanceledReset
@@ -277,6 +277,8 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		SetMouseDelay, 10
 		return
 	$Space::																					;; Space 暫停 / 繼續遊戲
+		if (!KeySpcae)
+			return
 		Key := "Space"
 		targetX := SpaceX, targetY := SpaceY
 		Gosub, CanceledReset
@@ -302,6 +304,8 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		SetMouseDelay, 10
 		return
 	$A::																						;; A 倍速調整
+		if (!KeyA)
+			return
 		Key := "A"
 		targetX := AX, targetY := AY
 		Gosub, CanceledReset
@@ -327,6 +331,8 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		SetMouseDelay, 10
 		return
 	$F::																						;; F 施放技能
+		if (!KeyF)
+			return
 		Key := "F"
 		targetX := FX, targetY := FY
 		Gosub, CanceledReset
@@ -352,6 +358,8 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		SetMouseDelay, 10
 		return
 	$D::																						;; D 撤退幹員 / 道具
+		if (!KeyD)
+			return
 		Key := "D"
 		targetX := DX, targetY := DY
 		Gosub, CanceledReset
@@ -376,7 +384,38 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		SetKeyDelay, 10
 		SetMouseDelay, 10
 		return
+	$P::																						;; P 開局暫停
+		if (!KeyP)
+			return
+		Key := "P"
+		ExitLoop := false
+		Gosub, CanceledReset
+		SetTimer, Cancel, %CancelTime%
+		SetKeyDelay, 0
+		SetMouseDelay, 0
+		KeyWait, %Key%, %CancelTime%
+		SetTimer, Cancel, delete
+		if (!Canceled) {																		;; 正常施放
+			ToolTip, Script start...
+			SetTimer, ToolTipReset, 1500
+			SetTimer, ForceExitLoop, 20000
+			Loop {
+				SendEvent, {Esc}
+				Gosub, isInBattle
+				if (Flag = "Pause" || ExitLoop || Toggle || !WinActive(WinTitle))
+					break
+			}
+			SetTimer, isInBattle, delete
+			SetTimer, ForceExitLoop, delete
+			ToolTip, Script end...
+			SetTimer, ToolTipReset, 1500
+		}
+		SetKeyDelay, 10
+		SetMouseDelay, 10
+		return
 	$K::																						;; K 遊戲行進約1幀後暫停
+		if (!KeyK)
+			return
 		Gosub, isInBattle
 		if (Flag = "Resume") {																	;; 暫停遊戲
 			SendEvent, {Esc}
@@ -408,7 +447,7 @@ $^!L::																							;; ctrl+alt+L 結束程式
 			SendEvent, {Space Up}
 			Loop {
 				DllCall("QueryPerformanceCounter", "Int64 *", end)
-				if ((end - start) / freq * 1000 > 39.998)
+				if ((end - start) / freq * 1000 > FrameTime)
 					break
 			}
 			SendEvent, {Esc}
@@ -417,34 +456,9 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		SetKeyDelay, 10
 		SetMouseDelay, 10
 		return
-	$P::																						;; P 開局暫停
-		Key := "P"
-		ExitLoop := false
-		Gosub, CanceledReset
-		SetTimer, Cancel, %CancelTime%
-		SetKeyDelay, 0
-		SetMouseDelay, 0
-		KeyWait, %Key%, %CancelTime%
-		SetTimer, Cancel, delete
-		if (!Canceled) {																		;; 正常施放
-			ToolTip, Script start...
-			SetTimer, ToolTipReset, 1500
-			SetTimer, ForceExitLoop, 20000
-			Loop {
-				SendEvent, {Esc}
-				Gosub, isInBattle
-				if (Flag = "Pause" || ExitLoop || Toggle || !WinActive(WinTitle))
-					break
-			}
-			SetTimer, isInBattle, delete
-			SetTimer, ForceExitLoop, delete
-			ToolTip, Script end...
-			SetTimer, ToolTipReset, 1500
-		}
-		SetKeyDelay, 10
-		SetMouseDelay, 10
-		return
 	$H::																						;; H 暫停點選
+		if (!KeyH)
+			return
 		Gosub, isInBattle
 		if (Flag = "Resume") {																	;; 暫停遊戲
 			SendEvent, {Esc}
@@ -476,6 +490,8 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		SetMouseDelay, 10
 		return
 	$M::																						;; M 暫停部署
+		if (!KeyM)
+			return
 		Gosub, isInBattle
 		if (Flag = "Resume") {																	;; 暫停遊戲
 			SendEvent, {Esc}
@@ -509,6 +525,8 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		SetMouseDelay, 10
 		return
 	$!+S::																						;; 單一關卡掛機清體力
+		if (!KeyasS)
+			return
 		Key := "S"
 		Gosub, CanceledReset
 		SetTimer, Cancel, %CancelTime%
@@ -566,12 +584,48 @@ $^!L::																							;; ctrl+alt+L 結束程式
 		return
 #If
 
-Cancel:
-	Canceled := true
-	SetTimer, Cancel, delete
-	ToolTip, Canceled!
-	SetTimer, ToolTipReset, 1000
+Configration() {
+	Loop {
+		if (mod(A_Index, 2) = 1)
+			continue
+		FileReadLine, Line, %A_ScriptDir%\Arknights Aide.config, %A_Index%
+		if (ErrorLevel || (A_Index / 2 = 1 && (Line = "NO" || Line = "No" || Line = "no")))
+			break
+		if (Line = "")
+			continue
+		switch (A_Index / 2 - 1) {
+			case 1 : WinTitle := Line
+			case 2 : Width := Line
+			case 3 : Height := Line
+			case 4 : X := Line
+			case 5 : Y := Line
+			case 6 : CancelTime := Line
+			case 7 : FrameTime := Line
+			case 8 : Developer := Line
+			case 9 : KeycaH := Line
+			case 10: KeycaD := Line
+			case 11: KeycaR := Line
+			case 12: KeycaL := Line
+			case 13: KeycaM := Line
+			case 14: KeycaG := Line
+			case 15: KeycaC := Line
+			case 16: KeyR := Line
+			case 17: KeyS := Line
+			case 18: KeyE := Line
+			case 19: KeySpace := Line
+			case 20: KeyA := Line
+			case 21: KeyF := Line
+			case 22: KeyD := Line
+			case 23: KeyP := Line
+			case 24: KeyK := Line
+			case 25: KeyH := Line
+			case 26: KeyM := Line
+			case 27: KeyasS := Line
+		}
+	}
 	return
+}
+
 CanceledReset:
 	Canceled := false
 	return
@@ -579,5 +633,12 @@ FlagReset:
 	Flag := ""
 	return
 ToolTipReset:
+	SetTimer, ToolTipReset, delete
 	ToolTip
+	return
+Cancel:
+	Canceled := true
+	SetTimer, Cancel, delete
+	ToolTip, Canceled!
+	SetTimer, ToolTipReset, 1000
 	return

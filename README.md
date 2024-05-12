@@ -1,7 +1,14 @@
 The program is writen with ahk v1.1.37.01. Click the following url to download : 
 https://www.autohotkey.com/
 
-Don't forget to modify the parameters if you want to use.
+Configuration file and executable file must be placed in the same path!
+Don't forget to modify the parameters in "Arknights Aide.config" as you want.
+
+v2.0 Update content : 
+1. Added configuration file
+2. Optimized some part of the code
+
+Welcome to report if there are any bugs.
 
 Operation list : (Space key is assumed to be pause in game on simulator)(Press 3s to cancel the move)
 1.  ctrl + alt + H	: Display the operation list 10 seconds
@@ -31,14 +38,19 @@ The following operations can only be performed on the simulator(Full Screen1920*
 19. M				: Deploy the operator or props by current mouse position while game paused
 20. alt + shift + S	: Start / Stop cleaning up the action points with specified level(AFK)
 
-v1.3 Update content : 
-1. Added new hotkey "K"
-2. Optimized part of the code
+===================================================================================================
 
 程式使用的語言是ahk v1.1.37.01，安裝請點擊以下連結：
 https://www.autohotkey.com/
 
-如果想要自用，別忘了把參數修改成適合你電腦使用
+設定檔和執行檔應置於相同路徑！
+如果想要自用，別忘了適當修改"Arknights Aide.config"中的參數
+
+v2.0 更新內容：
+1. 新增設定檔
+2. 優化部分代碼
+
+如果有任何漏洞歡迎回報
 
 操作列表：(預設空白鍵為模擬器自帶的遊戲暫停鈕)(長按3秒可以取消操作)
 1.  ctrl + alt + H	: 呼叫操作列表顯示10秒
@@ -67,9 +79,3 @@ https://www.autohotkey.com/
 18. H				: 暫停點選當前鼠標位置的幹員或道具
 19. M				: 暫停部署當前鼠標位置的幹員或道具(划火柴)
 20. alt + shift + S	: 開始 / 結束掛機清體力
-
-v1.3 更新內容：
-1. 新增熱鍵"K"
-2. 優化部分代碼
-
-有任何問題歡迎回報
