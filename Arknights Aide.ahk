@@ -30,7 +30,7 @@ Global RX := 90, RY := 80																		;; 熱鍵 R 的座標，單位:pixel
 Global SX := 1727, SY := 983																	;; 熱鍵 S 的座標，單位:pixel
 Global EX := 1600, EY := 900																	;; 熱鍵 E 的座標，單位:pixel
 Global SpaceX := 1860, SpaceY := 119															;; 熱鍵 Space 的座標，單位:pixel
-Global AX := 1700, AY := 70																		;; 熱鍵 A 的座標，單位:pixel
+Global AX := 1600, AY := 70																		;; 熱鍵 A 的座標，單位:pixel
 Global FX := 1225, FY := 665																	;; 熱鍵 F 的座標，單位:pixel
 Global DX := 850, DY := 323																		;; 熱鍵 D 的座標，單位:pixel
 Global currentX := 960, currentY := 540															;; 當前鼠標位置，單位:pixel
