@@ -12,7 +12,7 @@ Global KeySpace := true, KeyA := true, KeyF := true, KeyD := true, KeyP := true	
 Global KeyK := true, KeyH := true, KeyM := true, KeyasS := true									;; 各熱鍵是否啟用
 Global StdWidth := 1920, StdHeight := 1080														;; 標準長寬，單位：pixel
 Global RX := 90, RY := 80, SX := 1727, SY := 983, EX := 1600, EY := 900, SpaceX := 1860			;; 各熱鍵點擊座標，單位：pixel
-Global SpaceY := 119, AX := 1600, AY := 70, FX := 1225, FY := 665, DX := 850, DY := 323			;; 各熱鍵點擊座標，單位：pixel
+Global SpaceY := 119, AX := 1600, AY := 70, FX := 1200, FY := 562, DX := 883, DY := 326			;; 各熱鍵點擊座標，單位：pixel
 Global currentX := 960, currentY := 540															;; 當前鼠標位置，單位：pixel
 Global Developer := false																		;; 是否啟用開發人員模式
 Global Canceled := false																		;; 是否取消施放當前的熱鍵
