@@ -1,6 +1,7 @@
 The program is writen with ahk v1.1.37.01. Click the following url to download : 
 https://www.autohotkey.com/
 
+Update URL: https://github.com/BambooCat0509/Arknights-Aide
 Configuration file and execution file must be placed in the same path!
 Don't forget to modify the parameters in "Arknights Aide.config" as you want.
 
@@ -42,6 +43,7 @@ The following operations can only be performed on the simulator(Full screen) :
 程式使用的語言是ahk v1.1.37.01，安裝請點擊以下連結：
 https://www.autohotkey.com/
 
+更新下載連結：https://github.com/BambooCat0509/Arknights-Aide
 設定檔和執行檔應置於相同路徑！
 如果想要自用，別忘了適當修改"Arknights Aide.config"中的參數
 
