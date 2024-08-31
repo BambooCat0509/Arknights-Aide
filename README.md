@@ -4,8 +4,8 @@ https://www.autohotkey.com/
 Configuration file and execution file must be placed in the same path!
 Don't forget to modify the parameters in "Arknights Aide.config" as you want.
 
-v2.1.1 Update content : 
-1. Revise the click coordinates of hotkey F and D
+v2.1.2 Update content : 
+1. Optimize the using of hotkey P
 
 Welcome to report if there are any bugs.
 
@@ -45,8 +45,8 @@ https://www.autohotkey.com/
 設定檔和執行檔應置於相同路徑！
 如果想要自用，別忘了適當修改"Arknights Aide.config"中的參數
 
-v2.1.1 更新內容：
-1. 修改熱鍵F和D的點擊座標
+v2.1.2 更新內容：
+1. 優化熱鍵P的使用手感
 
 如果有任何漏洞歡迎回報
 

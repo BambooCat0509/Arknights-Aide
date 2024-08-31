@@ -369,10 +369,10 @@ $^!L::																							;; ctrl+alt+L 結束程式
 			SetTimer, ToolTipReset, 1500
 			SetTimer, ForceExitLoop, 20000
 			Loop {
-				SendEvent, {Esc}
 				Gosub, isInBattle
 				if (Flag = "Pause" || ExitLoop || Toggle || !WinActive(WinTitle))
 					break
+				SendEvent, {Esc}
 			}
 			SetTimer, isInBattle, delete
 			SetTimer, ForceExitLoop, delete
